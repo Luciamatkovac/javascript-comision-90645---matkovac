@@ -1,35 +1,407 @@
+/* paleta de colores tienda
+#1B3C53
+#456882
+#D2C1B6
+#F9F3EF
+
+font: font-family: "Nunito", sans-serif;*/
+/* GENERAL */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f0cd;
-  color: #333;
+  background-color: #f9f3ef;
+  font-family: "Nunito", sans-serif;
+}
+header {
+  background-color: #1b3c53;
   text-align: center;
+  color: #f9f3ef;
+  padding-top: 1%;
+}
+
+header h1 {
+  font-size: 3rem;
+}
+
+header h2 {
+  font-size: 2rem;
+}
+
+nav ul.menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  padding: 10px 20px;
   margin: 0;
-  padding: 0;
+  gap: 20px;
+  background-color: #456882;
+  font-size: 1.5rem;
+}
+nav ul.menu li a {
+  text-decoration: none;
+  color: #f9f3ef;
+  font-weight: bold;
 }
 
-.container {
-  padding: 50px 20px;
+nav ul.menu li a:hover {
+  color: #d2c1b6;
+}
+.bienvenida {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1b3c53;
+}
+p {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1b3c53;
+}
+/* INDEX */
+/* Ccs para las cards productos */
+#catalogo h2 {
+  text-align: center;
+  border-top: #1b3c53 3px solid;
+  border-bottom: #1b3c53 3px solid;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1b3c53;
 }
 
-h1 {
+.catalogo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card-producto {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 240px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card-producto img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* botón de agregar catalogo */
+
+.btn-agregar {
+  background-color: #1b3c53;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-agregar:hover {
+  background-color: #1b3c53;
+  transform: scale(1.05);
+}
+
+.btn-agregar:active {
+  transform: scale(0.97);
+}
+
+/* Contenedor del carrito */
+#contenedor-carrito {
+  list-style: none;
+  padding: 20px 80px;
+  margin: 0 0 15px 0;
+}
+
+/* Cada producto en el carrito */
+
+#contenedor-carrito li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px #456882;
+  font-size: 1rem;
+  color: #2f4c5f;
+}
+
+/* Total */
+
+.total-carrito {
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding-right: 35px;
+  text-align: right;
+  margin-top: 5px;
   color: #2c3e50;
 }
 
-p {
-  margin-bottom: 30px;
-  font-size: 1.1em;
+/* Botón finalizar compra */
+.btn-finalizar {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #456882;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
 }
 
-button {
-  padding: 12px 24px;
-  font-size: 1em;
+.btn-finalizar:hover {
+  background-color: #2f4c5f;
+}
+
+/* boton carrito*/
+
+#btn-toggle-carrito {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+  background-color: #456882;
   color: white;
-  background-color: #2d4f2b;
   border: none;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(69, 104, 130, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+#btn-toggle-carrito:hover {
+  background-color: #2f4c5f;
+}
+
+#btn-toggle-carrito:hover {
+  background-color: #2f4c5f;
+}
+
+/* MAYORISTA */
+/* Formulario de precios por mayor */
+
+.titform {
+  font-size: 2rem;
+  text-align: center;
+  color: #456882;
+  text-transform: uppercase;
+}
+.titform-p {
+  font-size: 1.5rem;
+  color: #456882;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #456882;
+  font-weight: bold;
+}
+.formulario {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formulario label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 10px;
+  border: 1px solid #d2c1b6;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formulario button {
+  background-color: #1b3c53;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #708a58;
+.formulario button:hover {
+  background-color: #456882;
+}
+
+.mensaje-confirmacion {
+  text-align: center;
+  background: #d2c1b6;
+  padding: 20px;
+  border: 1px solid #456882;
+  border-radius: 6px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.mensaje-confirmacion p {
+  color: #456882;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+/* CARRITO DE COMPRAS DEL FORMULARIO DE COMPRA*/
+
+#contenedor-carrito {
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+.item-carrito {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.item-carrito:last-child {
+  border-bottom: none;
+}
+
+.item-carrito p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+/* Total */
+#total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #1b3c53;
+}
+
+/* FORMULARIO DE COMPRA -DATOS CLIENTE*/
+.formh3 {
+  text-align: center;
+  color: #1b3c53;
+  border-bottom: #1b3c53 5px solid;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+#form-compra {
+  max-width: 500px;
+  margin: 25px auto;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 35px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#form-compra h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #1b3c53;
+  text-align: center;
+}
+
+#form-compra label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#form-compra input[type="text"],
+#form-compra input[type="tel"],
+#form-compra input[type="email"],
+#form-compra input[type="radio"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#form-compra input[type="radio"] {
+  width: auto;
+}
+
+#form-compra button {
+  background-color: #456882;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+#form-compra button:hover {
+  background-color: #1b3c53;
+}
+
+/* FORMAS DE PAGO */
+#form-compra input[type="radio"] {
+  margin-right: 5px;
+}
+
+#form-compra button {
+  background-color: #456882;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#form-compra button:hover {
+  background-color: #1b3c53;
+}
+
+/* MENSAJE DE CONFIRMACION DEL PEDIDO */
+.graciascompra {
+  background: #d2c1b6;
+  border: 1px solid #456882;
+  padding: 70px;
+  margin: 10px 200px;
+  border-radius: 6px;
+  text-align: center;
+  color: #1b3c53;
+}
+
+.graciascomprap {
+  color: #456882;
+  font-size: 2rem;
+  margin: 5%;
+}
+
+footer p {
+  font-size: 12px;
 }

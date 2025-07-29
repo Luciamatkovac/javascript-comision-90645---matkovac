@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de precios por mayor - Mundo Obra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>MUNDO OBRA</h1>
+      <h2>Materiales que duran, obras que perduran</h2>
+      <nav>
+        <ul class="menu">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="./mayorista.html">Mayorista</a></li>
+          <li><a href="./Formulariocompra.html">Carrito</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2 class="titform">Solicitá la lista de precios por mayor</h2>
+      <p class="titform-p">
+        Completá el formulario y te enviaremos nuestra lista de precios
+        mayorista a tu correo electronico
+      </p>
+
+      <form id="formpreciosxmayor" class="formulario">
+        <label for="nombre">Nombre y Apellido</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required />
+
+        <label for="empresa">Nombre de la empresa (opcional)</label>
+        <input type="text" id="empresa" name="empresa" />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          rows="10"
+          placeholder="Ej: Hola, tengo una constructora y necesito su lista de precios mayorista..."
+        ></textarea>
+
+        <button type="submit">Solicitar lista</button>
+      </form>
+
+      <div
+        id="mensaje-confirmacion"
+        class="mensaje-confirmacion"
+        style="display: none"
+      >
+        <h2>Tu solicitud fue enviada</h2>
+        <p>
+          Un agente de atencion al cliente se contactara contigo al email
+          informado y enviaremos nuestra lista de precios completa
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Mundo Obra</p>
+    </footer>
+
+    <!-- JavaScript separado -->
+    <script src="../JS/mayorista.js"></script>
+  </body>
+</html>
