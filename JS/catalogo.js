@@ -3,25 +3,25 @@ const catalogo = [
   {
     id: 1,
     nombre: "Bolsa de cemento 50kg",
-    imagen: "../medios/bolsa_cemento.jpg",
+    imagen: "./medios/bolsa_cemento.jpg",
     precio: 12863,
   },
   {
     id: 2,
     nombre: "Metro cúbico de arena",
-    imagen: "../medios/metro_cubico_arena.jpg",
+    imagen: "./medios/metro_cubico_arena.jpg",
     precio: 39732,
   },
   {
     id: 3,
     nombre: "Bolsa de cal 30kg",
-    imagen: "../medios/bolsa_de_cal.jpg",
+    imagen: "./medios/bolsa_de_cal.jpg",
     precio: 24566,
   },
   {
     id: 4,
     nombre: "Ladrillo común x pallet (800 unidades)",
-    imagen: "../medios/ladrillo_comun.jpg",
+    imagen: "./medios/ladrillo_comun.jpg",
     precio: 165_000,
   },
   {
