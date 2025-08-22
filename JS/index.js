@@ -21,7 +21,7 @@ btnToggleCarrito?.addEventListener("click", () => {
 // CARGAR CATALOGO POR FETCH
 async function cargarCatalogo() {
   try {
-    const res = await fetch("./JS/data/data.json");
+    const res = await fetch("./data/data.json");
     catalogo = await res.json();
     mostrarCatalogo();
   } catch (error) {
