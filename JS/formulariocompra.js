@@ -47,11 +47,25 @@ const formCompra = document.querySelector("#form-compra");
 formCompra.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
-  document.querySelector("main").innerHTML = `
-    <h2 class="graciascompra">¡Gracias por tu pedido!</h2>
-    <p class="graciascomprap">El equipo de atencion al cliente se comunicara contigo para coordinar el dia y horario de tu entrega</p>
-  `;
+  if (carrito.length === 0) {
+    // Swal si el carrito está vacío
+    Swal.fire({
+      icon: "warning",
+      title: "Carrito vacío",
+      text: "No podés finalizar la compra sin productos en el carrito",
+      confirmButtonText: "Aceptar",
+    });
+    return;
+  }
 
-  // Vaciar carrito
-  localStorage.removeItem("carrito");
+  // Swal de confirmación de compra
+  Swal.fire({
+    icon: "success",
+    title: "¡Gracias por tu pedido!",
+    text: "El equipo de atención al cliente se comunicará contigo para coordinar día y horario de entrega",
+    confirmButtonText: "Aceptar",
+  }).then(() => {
+    // Vaciar carrito
+    localStorage.removeItem("carrito");
+  });
 });

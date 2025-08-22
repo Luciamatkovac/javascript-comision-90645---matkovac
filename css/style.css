@@ -124,6 +124,16 @@ p {
   transform: scale(0.97);
 }
 
+.btn-eliminar {
+  background-color: #992a2a;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+.btn-eliminar:hover {
+  transform: scale(1.05);
+}
 /* Contenedor del carrito */
 #contenedor-carrito {
   list-style: none;
@@ -383,25 +393,4 @@ p {
 
 #form-compra button:hover {
   background-color: #1b3c53;
-}
-
-/* MENSAJE DE CONFIRMACION DEL PEDIDO */
-.graciascompra {
-  background: #d2c1b6;
-  border: 1px solid #456882;
-  padding: 70px;
-  margin: 10px 200px;
-  border-radius: 6px;
-  text-align: center;
-  color: #1b3c53;
-}
-
-.graciascomprap {
-  color: #456882;
-  font-size: 2rem;
-  margin: 5%;
-}
-
-footer p {
-  font-size: 12px;
 }

@@ -120,24 +120,48 @@ document.addEventListener("click", (evento) => {
     mostrarCarrito(); //  Esto recalcula y actualiza el total
 
     cantidadInput.value = 1; // resetear el contador de item
-  }
 
-  // liberia SweetAlert al agregar
-  Swal.fire({
-    icon: "success",
-    title: "Producto agregado",
-    text: `${productoSeleccionado.nombre} se añadió al carrito`,
-    timer: 1500,
-    showConfirmButton: false,
-  });
+    // liberia SweetAlert al agregar
+    if (window.Swal) {
+      Swal.fire({
+        icon: "success",
+        title: "Producto agregado",
+        text: `${productoSeleccionado.nombre} se añadió al carrito`,
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
+    return;
+  }
 
   // Eliminar producto
   if (evento.target.classList.contains("btn-eliminar")) {
-    const index = parseInt(evento.target.getAttribute("data-index"));
-    carrito = carrito.filter((producto, i) => i !== index);
+    const index = parseInt(evento.target.getAttribute("data-index"), 10);
+    const producto = carrito[index];
+    if (!producto) return;
 
-    guardarCarrito(); //actualiza localstorage
-    mostrarCarrito(); //  Esto recalcula y actualiza el total
+    Swal.fire({
+      title: "¿Eliminar producto?",
+      text: `Se va a quitar "${producto.nombre}" del carrito`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        carrito = carrito.filter((_, i) => i !== index);
+        guardarCarrito();
+        mostrarCarrito();
+
+        Swal.fire({
+          icon: "success",
+          title: "Eliminado",
+          text: `"${producto.nombre}" fue eliminado del carrito`,
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    });
   }
 });
 
