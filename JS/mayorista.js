@@ -5,7 +5,21 @@ const mensajeConfirmacion = document.querySelector("#mensaje-confirmacion");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  // occultar el form para mostrar solo el mensaje
-  form.style.display = "none";
-  mensajeConfirmacion.style.display = "block";
+  //obtener datos del formulario para mostrar en el Swal y hacerlo personalizado
+
+  const nombre = document.querySelector("#nombre").value;
+  const email = document.querySelector("#email").value;
+
+  Swal.fire({
+    icon: "success",
+    title: "Solicitud enviada",
+    html: `
+      <p>¡Gracias <strong>${nombre}</strong>!</p>
+      <p>Un agente de atención al cliente se contactará contigo en <strong>${email}</strong> y enviaremos nuestra lista de precios mayorista.</p>
+    `,
+    confirmButtonText: "Aceptar",
+  }).then(() => {
+    // opcional: limpiar el formulario después del Swal
+    form.reset();
+  });
 });
