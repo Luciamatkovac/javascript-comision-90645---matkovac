@@ -122,13 +122,42 @@ document.addEventListener("click", (evento) => {
     cantidadInput.value = 1; // resetear el contador de item
   }
 
+  // liberia SweetAlert al agregar producto
+  Swal.fire({
+    icon: "success",
+    title: "Producto agregado",
+    text: `${productoSeleccionado.nombre} se añadió al carrito`,
+    timer: 1500,
+    showConfirmButton: false,
+  });
+
   // Eliminar producto
   if (evento.target.classList.contains("btn-eliminar")) {
     const index = parseInt(evento.target.getAttribute("data-index"));
-    carrito = carrito.filter((producto, i) => i !== index);
+    const producto = carrito[index];
 
-    guardarCarrito(); //actualiza localstorage
-    mostrarCarrito(); //  Esto recalcula y actualiza el total
+    Swal.fire({
+      title: "¿Eliminar producto?",
+      text: `¿Seguro que querés quitar ${producto.nombre} del carrito?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        carrito = carrito.filter((_, i) => i !== index);
+        guardarCarrito();
+        mostrarCarrito();
+
+        Swal.fire({
+          icon: "success",
+          title: "Eliminado",
+          text: `${producto.nombre} fue quitado del carrito`,
+          timer: 1200,
+          showConfirmButton: false,
+        });
+      }
+    });
   }
 });
 
