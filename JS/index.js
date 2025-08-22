@@ -21,7 +21,7 @@ btnToggleCarrito?.addEventListener("click", () => {
 // CARGAR CATALOGO POR FETCH
 async function cargarCatalogo() {
   try {
-    const res = await fetch("./data/productos.json");
+    const res = await fetch("./JS/data/productos.json");
     catalogo = await res.json();
     mostrarCatalogo();
   } catch (error) {
@@ -122,7 +122,7 @@ document.addEventListener("click", (evento) => {
     cantidadInput.value = 1; // resetear el contador de item
   }
 
-  // liberia SweetAlert al agregar producto
+  // liberia SweetAlert al agregar
   Swal.fire({
     icon: "success",
     title: "Producto agregado",
@@ -134,30 +134,10 @@ document.addEventListener("click", (evento) => {
   // Eliminar producto
   if (evento.target.classList.contains("btn-eliminar")) {
     const index = parseInt(evento.target.getAttribute("data-index"));
-    const producto = carrito[index];
+    carrito = carrito.filter((producto, i) => i !== index);
 
-    Swal.fire({
-      title: "¿Eliminar producto?",
-      text: `¿Seguro que querés quitar ${producto.nombre} del carrito?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Sí, eliminar",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        carrito = carrito.filter((_, i) => i !== index);
-        guardarCarrito();
-        mostrarCarrito();
-
-        Swal.fire({
-          icon: "success",
-          title: "Eliminado",
-          text: `${producto.nombre} fue quitado del carrito`,
-          timer: 1200,
-          showConfirmButton: false,
-        });
-      }
-    });
+    guardarCarrito(); //actualiza localstorage
+    mostrarCarrito(); //  Esto recalcula y actualiza el total
   }
 });
 
