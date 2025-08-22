@@ -13,24 +13,20 @@ function guardarCarrito() {
 //mostrar el carrito actual al finla del index
 const btnToggleCarrito = document.querySelector("#btn-toggle-carrito");
 
-btnToggleCarrito.addEventListener("click", () => {
+btnToggleCarrito?.addEventListener("click", () => {
   //funcion para que se desplace al carrito del ginal y vea detalla scrollintoview
-  contenedorCarrito.scrollIntoView();
+  contenedorCarrito?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 // CARGAR CATALOGO POR FETCH
 async function cargarCatalogo() {
   try {
-    // 🔎 Ajustá la ruta si tu data.json está en otro lado
     const res = await fetch("./JS/json/data.json");
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     catalogo = await res.json();
-    mostrarCatalogo(); // ✅ recién acá pintamos
+    mostrarCatalogo();
   } catch (error) {
-    console.error("Error al cargar catálogo:", error);
-    if (contenedor) {
-      contenedor.innerHTML = "<p>No se pudo cargar el catálogo.</p>";
-    }
+    contenedor.innerHTML =
+      "<p>ERROR: No es posible cargar el catálogo en este momento.</p>";
   }
 }
 
@@ -100,6 +96,7 @@ document.addEventListener("click", (evento) => {
     const cantidad = parseInt(cantidadInput.value); //convierte numero parseint
 
     const productoSeleccionado = catalogo.find((p) => p.id === idProducto);
+    if (!productoSeleccionado) return;
 
     // Si ya está en el carrito sumo lo que haya clickeado
     //primero busco el prodcuto en el catalogo
@@ -119,6 +116,8 @@ document.addEventListener("click", (evento) => {
 
     guardarCarrito(); //actualiza localstorage
     mostrarCarrito(); //  Esto recalcula y actualiza el total
+
+    cantidadInput.value = 1; // resetear el contador de item
   }
 
   // Eliminar producto
