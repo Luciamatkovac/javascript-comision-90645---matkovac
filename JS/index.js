@@ -3,6 +3,7 @@ const contenedorCarrito = document.querySelector("#contenedor-carrito");
 const totalCarrito = document.querySelector("#total-carrito");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let catalogo = [];
 
 // Guardar carrito en localStorage para que no se reinicie cada vez que actualiza.
 function guardarCarrito() {
@@ -16,6 +17,22 @@ btnToggleCarrito.addEventListener("click", () => {
   //funcion para que se desplace al carrito del ginal y vea detalla scrollintoview
   contenedorCarrito.scrollIntoView();
 });
+
+// CARGAR CATALOGO POR FETCH
+async function cargarCatalogo() {
+  try {
+    // 🔎 Ajustá la ruta si tu data.json está en otro lado
+    const res = await fetch("./JS/json/data.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    catalogo = await res.json();
+    mostrarCatalogo(); // ✅ recién acá pintamos
+  } catch (error) {
+    console.error("Error al cargar catálogo:", error);
+    if (contenedor) {
+      contenedor.innerHTML = "<p>No se pudo cargar el catálogo.</p>";
+    }
+  }
+}
 
 // Mostrar el catalogo con ingreso de cantidad
 function mostrarCatalogo() {
